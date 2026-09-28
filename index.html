@@ -14,7 +14,7 @@
       --anvg-blue: #0038A8;
       --anvg-cyan: #00B4FF;
       --anvg-void: #010614;
-      --anvg-surface: rgba(2, 12, 38, 0.85);
+      --anvg-surface: rgba(2, 12, 38, 0.82);
       --anvg-card: rgba(3, 17, 51, 0.75);
       --anvg-card-border: rgba(0, 180, 255, 0.35);
       --anvg-border-hover: rgba(0, 180, 255, 0.7);
@@ -151,6 +151,8 @@
       margin-bottom: 2rem;
     }
 
+    .sidebar-close:hover { color: var(--anvg-cyan); }
+
     .drawer-list { list-style: none; }
     .drawer-list li { margin-bottom: 0.8rem; }
 
@@ -204,11 +206,11 @@
     .backdrop.show { display: block; }
 
     /* =========================================================
-       HERO WITH GUARANTEED AIRPORT DRONE SHOT BACKGROUND
+       HERO WITH YOUR TOKYO HANEDA & MT. FUJI BACKGROUND
        ========================================================= */
     .hero {
       position: relative;
-      min-height: 88vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -219,7 +221,6 @@
       background-color: #010614;
     }
 
-    /* DIRECT HIGH-DEFINITION AIRPORT RUNWAY & TERMINAL DRONE IMAGE */
     .hero-bg-image {
       position: absolute;
       top: 0;
@@ -227,16 +228,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: center bottom;
       z-index: 1;
-      opacity: 0.45;
-      filter: contrast(1.1) brightness(0.85);
+      opacity: 0.62;
+      filter: contrast(1.1) brightness(0.9);
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(1, 6, 20, 0.4) 0%, rgba(1, 6, 20, 0.95) 100%);
+      background: radial-gradient(circle at center, rgba(1, 6, 20, 0.35) 0%, rgba(1, 6, 20, 0.88) 100%);
       z-index: 2;
     }
 
@@ -244,13 +245,13 @@
       position: relative;
       z-index: 3;
       max-width: 920px;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       background: var(--anvg-surface);
       border: 1.5px solid var(--anvg-card-border);
       border-radius: 28px;
       padding: 3.8rem 2.8rem;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 180, 255, 0.1);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 180, 255, 0.12);
     }
 
     .ifc-pill {
@@ -758,12 +759,12 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH VERIFIED AIRPORT DRONE VIEW -->
+  <!-- HERO SECTION WITH TOKYO HANEDA & MT. FUJI BACKGROUND -->
   <section class="hero">
-    <!-- Dedicated Aerial Airport Runway / Tarmac Image -->
+    <!-- Local repository image for 100% reliable loading -->
     <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Narita_Airport_terminal_1_and_runway_16R_from_air.jpg/1920px-Narita_Airport_terminal_1_and_runway_16R_from_air.jpg" 
-      alt="Airport aerial drone view" 
+      src="haneda-bg.jpg" 
+      alt="Tokyo Haneda Airport with Mount Fuji" 
       class="hero-bg-image" 
     />
     <div class="hero-overlay"></div>
