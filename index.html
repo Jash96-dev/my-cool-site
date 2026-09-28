@@ -16,7 +16,7 @@
       --anvg-cyan: #00B4FF;         /* Logo Electric Cyan */
       --anvg-void: #010614;         /* Deep Midnight Base */
       --anvg-surface: rgba(2, 12, 38, 0.82);
-      --anvg-card: rgba(3, 17, 51, 0.7);
+      --anvg-card: rgba(3, 17, 51, 0.72);
       --anvg-card-border: rgba(0, 180, 255, 0.25);
       --anvg-border-hover: rgba(0, 180, 255, 0.7);
       
@@ -222,7 +222,7 @@
     .backdrop.show { display: block; }
 
     /* =========================================================
-       HERO SECTION WITH REAL AIRCRAFT COCKPIT BACKGROUND
+       HERO SECTION WITH AIRPORT DRONE SHOT BACKGROUND
        ========================================================= */
     .hero {
       position: relative;
@@ -234,10 +234,10 @@
       padding: 5rem 1.5rem;
       border-bottom: 1px solid var(--anvg-card-border);
       overflow: hidden;
-      /* Realistic High-Res Aircraft Flightdeck Background */
+      /* Genuine High-Resolution Aerial Airport Drone Shot */
       background: 
-        linear-gradient(180deg, rgba(1, 6, 20, 0.72) 0%, rgba(1, 6, 20, 0.9) 80%, var(--anvg-void) 100%),
-        url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=2000&q=85') center center / cover no-repeat;
+        linear-gradient(180deg, rgba(1, 6, 20, 0.75) 0%, rgba(1, 6, 20, 0.88) 80%, var(--anvg-void) 100%),
+        url('https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=2000&q=85') center center / cover no-repeat;
       background-attachment: fixed;
     }
 
@@ -279,7 +279,7 @@
       box-shadow: 0 0 10px var(--anvg-cyan);
     }
 
-    /* CLEAN NON-OVERLAPPING LOGO CONTAINER */
+    /* LOGO CONTAINER */
     .hero-logo-box {
       max-width: 480px;
       margin: 0 auto 1.5rem;
@@ -294,7 +294,6 @@
       max-height: 85px;
     }
 
-    /* Separate, perfectly spaced text underneath */
     .hero-org-title {
       font-family: var(--font-brand);
       font-weight: 700;
@@ -306,7 +305,7 @@
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
-    /* REFINED MEDIUM INTRODUCTION HEADING */
+    /* REFINED MEDIUM MAIN HEADING */
     .hero-main-heading {
       font-family: var(--font-brand);
       font-size: 1.85rem;
@@ -752,7 +751,6 @@
         <!-- EXACT LOGO VECTOR GEOMETRY -->
         <svg class="brand-vector-logo" viewBox="0 0 380 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <text x="0" y="50" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#ffffff" letter-spacing="-1">ANVG</text>
-          <!-- Forward-slash trapezoid matching your uploaded logo[cite: 1, 2] -->
           <polygon points="265,8 322,8 285,58 228,58" stroke="#ffffff" stroke-width="3.5" fill="none"/>
           <polygon points="280,12 316,12 288,54 252,54" fill="#0038A8"/>
           <polygon points="298,12 316,12 288,54 270,54" fill="#00B4FF"/>
@@ -772,7 +770,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH COCKPIT BACKGROUND -->
+  <!-- HERO SECTION WITH AIRPORT DRONE SHOT BACKGROUND -->
   <section class="hero">
     <div class="hero-card">
       <div class="ifc-pill">
@@ -780,19 +778,14 @@
         Infinite Flight VA
       </div>
 
-      <!-- EMBEDDED LOGO (No Overlap) -->
+      <!-- EMBEDDED LOGO -->
       <div class="hero-logo-box">
         <svg class="logo-svg-main" viewBox="0 0 460 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- ANVG Italic Title[cite: 1, 2] -->
           <text x="10" y="58" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="70" fill="#ffffff" letter-spacing="-1.5">ANVG</text>
-          <!-- Outer border trapezoid[cite: 1, 2] -->
           <polygon points="310,8 385,8 335,66 260,66" stroke="#ffffff" stroke-width="4.5" fill="none"/>
-          <!-- Inner blue field[cite: 1, 2] -->
           <polygon points="330,12 378,12 338,62 290,62" fill="#0038A8"/>
-          <!-- Electric cyan stripe[cite: 1, 2] -->
           <polygon points="355,12 378,12 338,62 315,62" fill="#00B4FF"/>
         </svg>
-        <!-- Distinct, cleanly separated subtitle underneath -->
         <div class="hero-org-title">All Nippon Virtual Group</div>
       </div>
 
