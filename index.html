@@ -3,766 +3,1143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Nippon Virtual Group | Fly Beyond Borders</title>
+  <title>All Nippon Virtual Group — Fly Beyond Borders</title>
   
+  <!-- Premium Executive Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================
-       EXACT ANVG BRAND COLORS (FROM YOUR LOGO)
+       ANVG ELITE DESIGN SYSTEM
        ========================================================= */
     :root {
       --anvg-blue: #0038A8;         /* Official Logo Royal Blue */
-      --anvg-cyan: #00B4FF;         /* Official Logo Cyan Accent */
-      --anvg-dark: #00184a;         /* Deep Midnight Base */
-      --anvg-white: #ffffff;
-      --glass-panel: rgba(0, 56, 168, 0.25);
-      --glass-card: rgba(0, 24, 74, 0.7);
-      --glass-border: rgba(0, 180, 255, 0.35);
-      --text-dim: #cbd5e1;
+      --anvg-cyan: #00B4FF;         /* Official Forward Slash Cyan */
+      --anvg-cyan-glow: rgba(0, 180, 255, 0.45);
+      --anvg-deep: #010817;         /* Deep Midnight Void */
+      --anvg-surface: rgba(3, 16, 46, 0.55);
+      --anvg-card: rgba(5, 22, 64, 0.45);
+      --anvg-card-hover: rgba(0, 56, 168, 0.28);
+      
+      --glass-border: rgba(0, 180, 255, 0.2);
+      --glass-border-bright: rgba(0, 180, 255, 0.6);
+      --glass-specular: rgba(255, 255, 255, 0.08);
+
+      --text-pure: #ffffff;
+      --text-subtle: #94a3b8;
+      --text-muted: #64748b;
+
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
 
     body {
-      background-color: var(--anvg-dark);
-      background-image: 
-        radial-gradient(circle at 50% 0%, var(--anvg-blue) 0%, transparent 70%),
-        radial-gradient(circle at 100% 50%, rgba(0, 180, 255, 0.15) 0%, transparent 50%);
-      background-attachment: fixed;
-      color: var(--anvg-white);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--anvg-deep);
+      color: var(--text-pure);
+      font-family: var(--font-body);
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.65;
+      background-image: 
+        radial-gradient(ellipse 90% 60% at 50% -20%, rgba(0, 56, 168, 0.55), transparent 70%),
+        radial-gradient(circle 800px at 100% 35%, rgba(0, 180, 255, 0.12), transparent 60%),
+        radial-gradient(circle 900px at 0% 70%, rgba(0, 56, 168, 0.35), transparent 65%);
+      background-attachment: fixed;
     }
 
-    /* NAVIGATION */
+    /* SYNTHETIC COCKPIT HUD WATERMARK */
+    .hud-grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 180, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 180, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================================
+       GLASS NAVIGATION BAR
+       ========================================================= */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(0, 24, 74, 0.85);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      background: rgba(1, 8, 23, 0.8);
       border-bottom: 1px solid var(--glass-border);
     }
 
     .nav-container {
-      max-width: 1300px;
+      max-width: 1380px;
       margin: 0 auto;
-      padding: 0.8rem 2rem;
+      padding: 1.1rem 2.4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .brand-logo-wrap {
+    .brand-link {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1.1rem;
       text-decoration: none;
     }
 
-    .logo-badge {
-      width: 44px;
-      height: 44px;
-      background: var(--anvg-blue);
-      border: 1px solid var(--anvg-cyan);
-      border-radius: 8px;
+    /* SVG Exact Geometric Recreation of your Logo Badge */
+    .brand-badge {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--anvg-blue), #001f5c);
+      border: 1.5px solid var(--anvg-cyan);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800;
-      font-style: italic;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(0, 180, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
+      position: relative;
     }
 
-    .brand-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 800;
-      font-style: italic;
-      color: #fff;
-      letter-spacing: 0.05em;
+    .brand-badge::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--anvg-cyan), transparent);
+      z-index: -1;
+      opacity: 0.4;
     }
 
-    .brand-title span { color: var(--anvg-cyan); }
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-titles h1 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    .brand-titles h1 span {
+      color: var(--anvg-cyan);
+      text-shadow: 0 0 15px var(--anvg-cyan);
+    }
+
+    .brand-titles .tagline {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-subtle);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 2.2rem;
     }
 
-    .nav-links { display: flex; gap: 1.8rem; }
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+    }
 
     .nav-links a {
-      color: var(--text-dim);
+      color: var(--text-subtle);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--anvg-cyan); }
-
-    .menu-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--glass-border);
-      border-radius: 6px;
-      padding: 8px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .menu-btn span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: #fff;
-    }
-
-    /* SIDEBAR DRAWER */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: -340px;
-      width: 320px;
-      height: 100vh;
-      background: rgba(0, 15, 48, 0.98);
-      backdrop-filter: blur(25px);
-      border-left: 1px solid var(--glass-border);
-      z-index: 2000;
-      padding: 2.5rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      transition: right 0.35s ease;
-      overflow-y: auto;
-    }
-
-    .sidebar.open { right: 0; }
-
-    .close-btn {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      font-size: 2rem;
-      cursor: pointer;
-      margin-bottom: 1.5rem;
-    }
-
-    .drawer-list { list-style: none; }
-    .drawer-list li { margin-bottom: 0.8rem; }
-
-    .drawer-item {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
-      cursor: pointer;
-    }
-
-    .drawer-item:hover {
-      background: var(--anvg-blue);
-      color: var(--anvg-cyan);
-    }
-
-    .sub-menu {
-      list-style: none;
-      padding-left: 1.2rem;
-      margin-top: 0.5rem;
-      display: none;
-      border-left: 2px solid var(--anvg-cyan);
-    }
-
-    .sub-menu.show { display: block; }
-
-    .sub-menu a {
-      color: var(--text-dim);
-      text-decoration: none;
-      display: block;
-      padding: 0.4rem 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .sub-menu a:hover { color: #fff; }
-
-    .backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-      z-index: 1500;
-      display: none;
-    }
-
-    .backdrop.show { display: block; }
-
-    /* HERO SECTION */
-    .hero {
-      position: relative;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 5rem 1.5rem;
-      /* Clean subtle cockpit watermark overlay */
-      background: 
-        linear-gradient(180deg, rgba(0, 24, 74, 0.85) 0%, rgba(0, 15, 48, 0.95) 100%),
-        radial-gradient(circle at center, transparent 40%, #00184a 95%);
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    .hero-card {
-      max-width: 900px;
-      background: var(--glass-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 4rem 3rem;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .ifc-pill {
-      display: inline-block;
-      background: rgba(0, 180, 255, 0.15);
-      border: 1px solid var(--anvg-cyan);
-      color: var(--anvg-cyan);
-      padding: 0.4rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
-    }
-
-    .brand-hero-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      font-style: italic;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 30px rgba(0, 180, 255, 0.5);
-    }
-
-    .brand-hero-title span { color: var(--anvg-cyan); }
-
-    .brand-subline {
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 1.5rem;
-    }
-
-    .slogan {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--anvg-cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 2.8rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.95rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 10px;
-      text-decoration: none;
-      cursor: pointer;
+      letter-spacing: 0.04em;
       transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
+      position: relative;
     }
 
-    .btn-cyan {
-      background: var(--anvg-cyan);
-      color: var(--anvg-dark);
-      border: none;
-      box-shadow: 0 0 25px rgba(0, 180, 255, 0.5);
+    .nav-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 12px var(--anvg-cyan);
     }
 
-    .btn-cyan:hover {
+    .btn-apply-nav {
+      background: linear-gradient(135deg, var(--anvg-cyan), #0077c8);
+      color: var(--anvg-deep) !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.45);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid #ffffff;
+    }
+
+    .btn-apply-nav:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 35px rgba(0, 180, 255, 0.8);
     }
 
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.05);
+    .menu-trigger {
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--glass-border);
-      color: #fff;
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: 0.25s;
     }
 
-    .btn-outline:hover {
-      border-color: var(--anvg-cyan);
+    .menu-trigger:hover {
       background: rgba(0, 180, 255, 0.15);
+      border-color: var(--anvg-cyan);
+      box-shadow: 0 0 15px rgba(0, 180, 255, 0.3);
     }
 
-    /* SECTION BASICS */
-    .section-wrap {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 5rem 1.8rem;
+    .menu-trigger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
     }
 
-    .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 3rem;
-      color: #fff;
-    }
-
-    /* AUTO-COUNT BOXES */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .stat-card {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      border-radius: 18px;
+    /* =========================================================
+       SIDEBAR DRAWER
+       ========================================================= */
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      right: -380px;
+      width: 350px;
+      height: 100vh;
+      background: rgba(1, 8, 23, 0.95);
+      backdrop-filter: blur(35px);
+      border-left: 1px solid var(--glass-border);
+      z-index: 2000;
       padding: 2.8rem 2rem;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
     }
 
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 4rem;
+    .sidebar-drawer.open { right: 0; }
+
+    .sidebar-close {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .sidebar-close:hover { color: var(--anvg-cyan); }
+
+    .drawer-nav { list-style: none; }
+    .drawer-nav li { margin-bottom: 0.9rem; }
+
+    .drawer-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .drawer-link:hover {
+      background: var(--anvg-card-hover);
+      border-color: var(--glass-border);
+      color: var(--anvg-cyan);
+      transform: translateX(4px);
+    }
+
+    .sub-drawer {
+      list-style: none;
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+      display: none;
+      border-left: 2px solid var(--anvg-cyan);
+    }
+
+    .sub-drawer.show { display: block; }
+
+    .sub-drawer a {
+      color: var(--text-subtle);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.55rem 0.8rem;
+      transition: 0.2s;
+    }
+
+    .sub-drawer a:hover { color: #fff; transform: translateX(4px); }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1500;
+      display: none;
+    }
+
+    .drawer-backdrop.show { display: block; }
+
+    /* =========================================================
+       HERO: COCKPIT WATERMARK & GLASS HUD
+       ========================================================= */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.8rem;
+      border-bottom: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+
+    /* Tactical Flightdeck HUD Watermark Geometry */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(0, 56, 168, 0.35) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(0, 180, 255, 0.015) 0px, rgba(0, 180, 255, 0.015) 2px, transparent 2px, transparent 20px);
+      pointer-events: none;
+    }
+
+    .hero-glass-core {
+      position: relative;
+      z-index: 2;
+      max-width: 1040px;
+      backdrop-filter: blur(32px) saturate(180%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%);
+      background: var(--anvg-surface);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 32px;
+      padding: 5rem 3.5rem;
+      box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.75),
+        inset 0 0 35px rgba(0, 180, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .ifc-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 180, 255, 0.1);
+      border: 1px solid var(--anvg-cyan);
+      padding: 0.5rem 1.4rem;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--anvg-cyan);
+      margin-bottom: 2.2rem;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
+    }
+
+    .ifc-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--anvg-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--anvg-cyan);
+      animation: beaconPulse 1.8s infinite;
+    }
+
+    @keyframes beaconPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    /* Hero Big Title */
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 4.4rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ffffff 40%, var(--anvg-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 45px rgba(0, 180, 255, 0.4);
+    }
+
+    .hero-subtitle-formal {
+      font-family: var(--font-body);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-slogan-gold {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
       font-weight: 800;
       color: var(--anvg-cyan);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      font-size: 1rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
+      margin-bottom: 3.2rem;
+      text-shadow: 0 0 30px rgba(0, 180, 255, 0.6);
     }
 
-    /* OPERATIONS CENTER */
-    .ops-box {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 3.5rem 2.5rem;
+    .hero-btns {
+      display: flex;
+      gap: 1.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .ops-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.8rem;
-      margin-top: 2rem;
-    }
-
-    .ops-item {
-      background: rgba(0, 56, 168, 0.2);
-      border: 1px solid var(--glass-border);
+    .btn-hero {
+      padding: 1.15rem 2.6rem;
+      font-size: 1.02rem;
+      font-weight: 800;
       border-radius: 14px;
-      padding: 2rem;
       text-decoration: none;
-      color: #fff;
-      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
     }
 
-    .ops-item:hover {
-      background: var(--anvg-blue);
+    .btn-hero-cyan {
+      background: linear-gradient(135deg, var(--anvg-cyan), #0077c8);
+      color: var(--anvg-deep);
+      border: 1px solid #fff;
+      box-shadow: 0 0 30px rgba(0, 180, 255, 0.5);
+    }
+
+    .btn-hero-cyan:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 50px rgba(0, 180, 255, 0.85);
+    }
+
+    .btn-hero-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid var(--glass-border);
+      color: #fff;
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-hero-glass:hover {
+      background: rgba(0, 180, 255, 0.15);
       border-color: var(--anvg-cyan);
       transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.3);
     }
 
-    .ops-item h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
+    /* =========================================================
+       SECTION SHELL ARCHITECTURE
+       ========================================================= */
+    .section-shell {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 6.5rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header-block {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-subtag {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--anvg-cyan);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .section-heading-bold {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       AUTO-INCREMENT NETWORK STATS
+       ========================================================= */
+    .stat-cluster {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.4rem;
+    }
+
+    .stat-glass-card {
+      background: var(--anvg-card);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 26px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .stat-glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--anvg-cyan), transparent);
+    }
+
+    .stat-glass-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--anvg-cyan);
+      box-shadow: 0 25px 60px rgba(0, 180, 255, 0.35);
+      background: var(--anvg-card-hover);
+    }
+
+    .stat-counter-value {
+      font-family: var(--font-mono);
+      font-size: 4.8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(180deg, #ffffff 40%, var(--anvg-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0, 180, 255, 0.4);
+    }
+
+    .stat-caption {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+    }
+
+    /* =========================================================
+       OPERATIONS CENTER
+       ========================================================= */
+    .ops-terminal-glass {
+      background: var(--anvg-card);
+      backdrop-filter: blur(32px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 4rem 3.2rem;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .ops-tile {
+      background: rgba(1, 8, 23, 0.65);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
     }
 
-    .ops-item h4 span { color: var(--anvg-cyan); }
+    .ops-tile:hover {
+      border-color: var(--anvg-cyan);
+      transform: translateY(-5px);
+      background: rgba(0, 56, 168, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 180, 255, 0.3);
+    }
 
-    .ops-stamp {
-      margin-top: 2.5rem;
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 0.9rem;
+    .ops-tile h4 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ops-tile h4 span {
+      color: var(--anvg-cyan);
+      transition: transform 0.25s;
+    }
+
+    .ops-tile:hover h4 span {
+      transform: translate(3px, -3px);
+    }
+
+    .ops-tile p {
+      color: var(--text-subtle);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .ops-status-bar {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1.5rem;
+      padding-top: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-subtle);
     }
 
-    .ops-stamp span { color: var(--anvg-cyan); font-weight: 700; }
-
-    /* RADAR MAP */
-    .radar-container {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .radar-header {
-      padding: 1rem 1.8rem;
-      background: rgba(0, 15, 48, 0.95);
-      border-bottom: 1px solid var(--glass-border);
-      font-size: 0.85rem;
+    .ops-status-bar span {
       color: var(--anvg-cyan);
       font-weight: 700;
     }
 
-    .radar-frame {
-      width: 100%;
-      height: 520px;
+    /* =========================================================
+       RADAR MAP
+       ========================================================= */
+    .radar-terminal {
+      background: var(--anvg-card);
+      backdrop-filter: blur(28px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
     }
 
-    .radar-frame iframe {
+    .radar-top-hud {
+      padding: 1.3rem 2.2rem;
+      background: rgba(1, 8, 23, 0.95);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .radar-live-signal {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .radar-live-ring {
+      width: 10px;
+      height: 10px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 14px #34d399;
+      animation: signalPulse 1.8s infinite;
+    }
+
+    @keyframes signalPulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 18px #34d399; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    .radar-screen {
+      width: 100%;
+      height: 580px;
+      background: var(--anvg-deep);
+    }
+
+    .radar-screen iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
 
-    /* MISSION */
-    .mission-card {
-      background: linear-gradient(135deg, rgba(0, 56, 168, 0.4) 0%, rgba(0, 24, 74, 0.85) 100%);
-      border: 1px solid var(--anvg-cyan);
-      border-radius: 22px;
-      padding: 4rem 3rem;
+    /* =========================================================
+       OUR MISSION
+       ========================================================= */
+    .mission-plaque {
+      background: linear-gradient(135deg, rgba(0, 56, 168, 0.4) 0%, rgba(1, 8, 23, 0.85) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid var(--anvg-cyan);
+      border-radius: 32px;
+      padding: 5rem 3.8rem;
       text-align: center;
+      box-shadow: 0 25px 70px rgba(0, 56, 168, 0.4);
     }
 
-    .mission-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
+    .mission-plaque h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
       color: var(--anvg-cyan);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 30px rgba(0, 180, 255, 0.5);
     }
 
-    .mission-card p {
-      font-size: 1.25rem;
-      line-height: 1.85;
-      max-width: 900px;
+    .mission-text {
+      font-size: 1.4rem;
+      line-height: 2;
+      max-width: 980px;
       margin: 0 auto;
       color: #f1f5f9;
+      font-weight: 400;
     }
 
-    /* CEO QUOTE */
-    .ceo-card {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      border-left: 6px solid var(--anvg-cyan);
-      border-radius: 20px;
-      padding: 3.5rem 3rem;
-      max-width: 900px;
+    /* =========================================================
+       CEO STATEMENT
+       ========================================================= */
+    .ceo-executive-card {
+      background: var(--anvg-card);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 4.5rem 4rem;
+      max-width: 1000px;
       margin: 0 auto;
+      border-left: 8px solid var(--anvg-cyan);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     }
 
-    .ceo-card blockquote {
-      font-size: 1.25rem;
+    .ceo-quote-lead {
+      font-size: 1.35rem;
       font-style: italic;
-      line-height: 1.8;
-      color: #fff;
-      margin-bottom: 2rem;
+      line-height: 1.9;
+      color: #f8fafc;
+      margin-bottom: 2.5rem;
     }
 
-    .ceo-name {
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--anvg-cyan);
+    .ceo-signature-block {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
     }
 
-    .ceo-role {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-    }
-
-    /* READY TO JOIN */
-    .join-card {
-      background: radial-gradient(circle at center, rgba(0, 56, 168, 0.5) 0%, rgba(0, 24, 74, 0.95) 80%);
+    .ceo-gold-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--anvg-blue), #001f5c);
       border: 2px solid var(--anvg-cyan);
-      border-radius: 24px;
-      padding: 5rem 2rem;
-      text-align: center;
-      box-shadow: 0 0 50px rgba(0, 180, 255, 0.35);
-    }
-
-    .join-card h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .join-card p {
-      color: var(--text-dim);
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: 0 auto 2.8rem;
-    }
-
-    .btn-apply-big {
-      background: var(--anvg-cyan);
-      color: var(--anvg-dark);
-      padding: 1.15rem 3.2rem;
-      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: var(--anvg-cyan);
       font-size: 1.15rem;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
+    }
+
+    .ceo-name-field {
+      font-family: var(--font-display);
       font-weight: 800;
-      border: none;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ceo-role-field {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* =========================================================
+       RECRUITMENT BANNER
+       ========================================================= */
+    .recruit-cockpit-banner {
+      background: radial-gradient(circle at center, rgba(0, 56, 168, 0.55) 0%, rgba(1, 8, 23, 0.95) 85%);
+      backdrop-filter: blur(32px);
+      border: 2px solid var(--anvg-cyan);
+      border-radius: 32px;
+      padding: 6rem 2rem;
+      text-align: center;
+      box-shadow: 0 0 80px rgba(0, 180, 255, 0.45);
+    }
+
+    .recruit-cockpit-banner h2 {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .recruit-cockpit-banner p {
+      color: var(--text-subtle);
+      font-size: 1.3rem;
+      max-width: 720px;
+      margin: 0 auto 3.2rem;
+    }
+
+    .btn-apply-cta {
+      background: linear-gradient(135deg, var(--anvg-cyan), #0077c8);
+      color: var(--anvg-deep);
+      padding: 1.3rem 3.8rem;
+      border-radius: 16px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 45px rgba(0, 180, 255, 0.7);
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1.1rem;
       text-decoration: none;
-      box-shadow: 0 0 35px rgba(0, 180, 255, 0.7);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* FOOTER */
+    .btn-apply-cta:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 0 70px rgba(0, 180, 255, 1);
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
     footer {
-      background: #000e2b;
-      border-top: 1px solid var(--glass-border);
-      padding: 4.5rem 1.8rem 2.5rem;
+      background: #00050d;
+      border-top: 1.5px solid var(--glass-border);
+      padding: 5.5rem 2rem 3.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .footer-grid {
-      max-width: 1240px;
+    .footer-matrix {
+      max-width: 1340px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 3.5rem;
-      margin-bottom: 3.5rem;
+      gap: 4rem;
+      margin-bottom: 4.5rem;
     }
 
     .footer-col h5 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 1.6rem;
       color: var(--anvg-cyan);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 1.4rem;
     }
 
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.8rem; }
+    .footer-menu { list-style: none; }
+    .footer-menu li { margin-bottom: 0.95rem; }
 
-    .footer-links a {
-      color: var(--text-dim);
+    .footer-menu a {
+      color: var(--text-subtle);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      transition: all 0.25s;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
     }
 
-    .footer-links a:hover { color: #fff; }
+    .footer-menu a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
 
-    .legal-notice {
-      max-width: 1240px;
+    .footer-legal-vault {
+      max-width: 1340px;
       margin: 0 auto;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 2rem;
+      padding-top: 2.5rem;
       text-align: center;
-      color: #64748b;
-      font-size: 0.85rem;
-      line-height: 1.8;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.9;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .nav-links { display: none; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .brand-hero-title { font-size: 2.3rem; }
+      .footer-matrix { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.8rem; }
+      .hero-glass-core { padding: 3.5rem 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="backdrop" id="backdrop"></div>
+  <!-- Background Synthetic HUD Grid -->
+  <div class="hud-grid-overlay"></div>
 
-  <!-- SIDEBAR NAVIGATION -->
-  <aside class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar">&times;</button>
-    <ul class="drawer-list">
-      <li><a href="index.html" class="drawer-item">Home</a></li>
+  <!-- Full-Screen Drawer Backdrop -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+
+  <!-- Slide-out Navigation Drawer -->
+  <aside class="sidebar-drawer" id="sidebar">
+    <button class="sidebar-close" id="closeSidebar">&times;</button>
+    <ul class="drawer-nav">
+      <li><a href="index.html" class="drawer-link">Home</a></li>
+      
       <li>
-        <div class="drawer-item dropdown-btn" data-target="about-sub">About us <span>▾</span></div>
-        <ul class="sub-menu" id="about-sub">
+        <div class="drawer-link dropdown-toggle" data-target="sub-about">
+          About us <span>▾</span>
+        </div>
+        <ul class="sub-drawer" id="sub-about">
           <li><a href="about.html">About us</a></li>
           <li><a href="staff.html">Staff</a></li>
         </ul>
       </li>
+
       <li>
-        <div class="drawer-item dropdown-btn" data-target="ops-sub">Operations <span>▾</span></div>
-        <ul class="sub-menu" id="ops-sub">
+        <div class="drawer-link dropdown-toggle" data-target="sub-ops">
+          Operations <span>▾</span>
+        </div>
+        <ul class="sub-drawer" id="sub-ops">
           <li><a href="fleet.html">Fleet</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="routes.html">Routes</a></li>
           <li><a href="ranks.html">Ranks</a></li>
         </ul>
       </li>
-      <li><a href="training.html" class="drawer-item">Training</a></li>
+
+      <li><a href="training.html" class="drawer-link">Training</a></li>
+
       <li>
-        <div class="drawer-item dropdown-btn" data-target="change-sub">Change log <span>▾</span></div>
-        <ul class="sub-menu" id="change-sub">
+        <div class="drawer-link dropdown-toggle" data-target="sub-change">
+          Change log <span>▾</span>
+        </div>
+        <ul class="sub-drawer" id="sub-change">
           <li><a href="changelog.html">Change log</a></li>
           <li><a href="settings.html">Settings</a></li>
         </ul>
       </li>
-      <li><a href="apply.html" class="drawer-item" style="color: var(--anvg-cyan);">Apply ↗</a></li>
+
+      <li><a href="apply.html" class="drawer-link" style="color: var(--anvg-cyan); font-weight: 800;">Apply ↗</a></li>
     </ul>
   </aside>
 
-  <!-- TOP HEADER -->
+  <!-- Sticky Top Frosted Header -->
   <header>
     <div class="nav-container">
-      <a href="index.html" class="brand-logo-wrap">
-        <div class="logo-badge">ANVG</div>
-        <div class="brand-title">ANVG <span>GROUP</span></div>
+      <a href="index.html" class="brand-link">
+        <div class="brand-badge">
+          <!-- Geometric Vector Recreation of your ANVG Badge[cite: 2] -->
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+            <text x="5" y="68" font-family="'Syne', sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#ffffff">A</text>
+            <polygon points="68,20 86,20 54,80 36,80" fill="#00B4FF"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>ANVG <span>GROUP</span></h1>
+          <div class="tagline">All Nippon Virtual Group</div>
+        </div>
       </a>
 
+      <!-- Quick Action Navigation -->
       <div class="nav-actions">
         <nav class="nav-links">
           <a href="events.html">Events</a>
           <a href="about.html">Learn more</a>
           <a href="fleet.html">Join fleet</a>
         </nav>
-        <button class="menu-btn" id="openSidebar" aria-label="Open menu">
-          <span></span><span></span><span></span>
+        <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+        <button class="menu-trigger" id="openSidebar" aria-label="Open Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- Hero with Cockpit Glass HUD -->
   <section class="hero">
-    <div class="hero-card">
-      <div class="ifc-pill">INFINITE FLIGHT VA</div>
-      <h1 class="brand-hero-title">ANVG // <span>ALL NIPPON</span></h1>
-      <div class="brand-subline">All Nippon Virtual Group</div>
-      <div class="slogan">Fly beyond borders</div>
+    <div class="hero-glass-core">
+      <div class="ifc-pill">
+        <div class="ifc-dot"></div>
+        OFFICIAL INFINITE FLIGHT VA
+      </div>
 
-      <div class="hero-buttons">
-        <a href="events.html" class="btn btn-outline">Events</a>
-        <a href="about.html" class="btn btn-outline">Learn more</a>
-        <a href="fleet.html" class="btn btn-cyan">Join fleet</a>
+      <h1 class="hero-title">All Nippon <br/><span>Virtual Group</span></h1>
+      <div class="hero-subtitle-formal">All Nippon Virtual Group</div>
+      <div class="hero-slogan-gold">Fly beyond borders</div>
+
+      <div class="hero-btns">
+        <a href="events.html" class="btn-hero btn-hero-glass">Events</a>
+        <a href="about.html" class="btn-hero btn-hero-glass">Learn more</a>
+        <a href="fleet.html" class="btn-hero btn-hero-cyan">Join fleet</a>
       </div>
     </div>
   </section>
 
-  <!-- AUTO-INCREMENT COUNTERS (HUBS, AIRCRAFT FAMILY, CONTINENTS) -->
-  <section class="section-wrap">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num" id="hubsCount">0</div>
-        <div class="stat-label">Hubs</div>
+  <!-- Section 1: Auto-Incrementing Network Statistics -->
+  <section class="section-shell">
+    <div class="section-header-block">
+      <span class="section-subtag">Dynamic Telemetry</span>
+      <h2 class="section-heading-bold">Network Capacity</h2>
+    </div>
+
+    <div class="stat-cluster">
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="hubsCount">0</div>
+        <div class="stat-caption">Hubs</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num" id="aircraftCount">0</div>
-        <div class="stat-label">Aircraft Family</div>
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="aircraftCount">0</div>
+        <div class="stat-caption">Aircraft Family</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num" id="continentsCount">0</div>
-        <div class="stat-label">Continents Served</div>
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="continentsCount">0</div>
+        <div class="stat-caption">Continents Served</div>
       </div>
     </div>
   </section>
 
-  <!-- OPERATIONS CENTER -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <div class="ops-box">
-      <h2 class="section-title" style="margin-bottom: 1.5rem;">Operations Center</h2>
-      <div class="ops-options">
-        <a href="roster.html" class="ops-item">
-          <h4>Pilots <span>↗</span></h4>
-          <p style="color: var(--text-dim); font-size: 0.95rem;">Active pilot roster and flight profiles.</p>
+  <!-- Section 2: Operations Center -->
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="ops-terminal-glass">
+      <div class="section-header-block" style="margin-bottom: 2rem;">
+        <span class="section-subtag">Command Center</span>
+        <h2 class="section-heading-bold">Operations Center</h2>
+      </div>
+
+      <div class="ops-grid">
+        <a href="roster.html" class="ops-tile">
+          <div>
+            <h4>Pilots <span>↗</span></h4>
+            <p>Active pilot credentials, flight log rankings, accumulated flight hours, and type ratings.</p>
+          </div>
         </a>
-        <a href="routes.html" class="ops-item">
-          <h4>Routes <span>↗</span></h4>
-          <p style="color: var(--text-dim); font-size: 0.95rem;">Virtual airline flight routes and schedule.</p>
+
+        <a href="routes.html" class="ops-tile">
+          <div>
+            <h4>Routes <span>↗</span></h4>
+            <p>Comprehensive domestic Japanese feeder connections and intercontinental long-haul corridors.</p>
+          </div>
         </a>
-        <a href="codeshare.html" class="ops-item">
-          <h4>Code shares <span>↗</span></h4>
-          <p style="color: var(--text-dim); font-size: 0.95rem;">Partner operations and codeshare flights.</p>
+
+        <a href="codeshare.html" class="ops-tile">
+          <div>
+            <h4>Code shares <span>↗</span></h4>
+            <p>Global virtual exchange lines and reciprocal flight-log agreements.</p>
+          </div>
         </a>
       </div>
-      <div class="ops-stamp">
-        stats are updated monthly by our operations team | last updates <span id="opsStamp">MM / YYYY</span>
+
+      <div class="ops-status-bar">
+        stats are updated monthly by our operations team | last updates <span id="opsLiveDate">MM / YYYY</span>
       </div>
     </div>
   </section>
 
-  <!-- WAYPOINT LIVE WORLD MAP -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <h2 class="section-title">World Map</h2>
-    <div class="radar-container">
-      <div class="radar-header">WAYPOINT LIVE RADAR</div>
-      <div class="radar-frame">
+  <!-- Section 3: Live Radar Map (Waypoint Live Integration) -->
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="section-header-block">
+      <span class="section-subtag">Live Telemetry</span>
+      <h2 class="section-heading-bold">World Map</h2>
+    </div>
+
+    <div class="radar-terminal">
+      <div class="radar-top-hud">
+        <div class="radar-live-signal">
+          <div class="radar-live-ring"></div>
+          WAYPOINT LIVE AIRSPACE
+        </div>
+        <div style="color: var(--text-subtle);">INFINITE FLIGHT RADAR</div>
+      </div>
+      <div class="radar-screen">
         <iframe src="https://waypoint-live.app/" title="Waypoint Live Map"></iframe>
       </div>
     </div>
   </section>
 
-  <!-- OUR MISSION -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <div class="mission-card">
+  <!-- Section 4: Our Mission -->
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="mission-plaque">
       <h3>Our Mission</h3>
-      <p>
+      <p class="mission-text">
         "To turn every flight into a journey worth remembering. ANVG brings together pilots from around the world to explore, connect, and experience aviation through the spirit of Japan. We fly with purpose, grow as a community, and leave a mark on every route we take."
       </p>
     </div>
   </section>
 
-  <!-- CEO THOUGHTS -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <div class="ceo-card">
-      <blockquote>
+  <!-- Section 5: CEO Thoughts -->
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="ceo-executive-card">
+      <p class="ceo-quote-lead">
         "Welcome to ANVG. We’re here to make every flight meaningful, every destination memorable, and every pilot part of something greater. Let’s fly together and build something we can be proud of."
-      </blockquote>
-      <div>
-        <!-- CEO name can be edited directly here whenever needed -->
-        <div class="ceo-name" id="ceoName">LUCIANO</div>
-        <div class="ceo-role">CEO - All Nippon Virtual Group</div>
+      </p>
+      <div class="ceo-signature-block">
+        <div class="ceo-gold-badge">CEO</div>
+        <div>
+          <!-- Easy to edit in future config -->
+          <div class="ceo-name-field" id="ceoNameTag">LUCIANO</div>
+          <div class="ceo-role-field">CEO - All Nippon Virtual Group</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- READY TO JOIN -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <div class="join-card">
+  <!-- Section 6: Recruitment Call to Action -->
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="recruit-cockpit-banner">
       <h2>Ready to join?</h2>
       <p>Take your Infinite Flight experience to the next level. Become a part of our growing virtual family today.</p>
-      <a href="apply.html" class="btn-apply-big">
+      <a href="apply.html" class="btn-apply-cta">
         Submit Application 
-        <!-- Share icon -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <!-- Share Symbol -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="18" cy="5" r="3"></circle>
           <circle cx="6" cy="12" r="3"></circle>
           <circle cx="18" cy="19" r="3"></circle>
@@ -773,19 +1150,20 @@
     </div>
   </section>
 
-  <!-- FOOTER NAVIGATION & COMMUNITY -->
+  <!-- Section 7: Footer Navigation & Community -->
   <footer>
-    <div class="footer-grid">
+    <div class="footer-matrix">
       <div class="footer-col">
         <h5 style="color: #fff;">ANVG</h5>
-        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.7;">
+        <p style="color: var(--text-subtle); font-size: 0.98rem; max-width: 350px; line-height: 1.85;">
           All Nippon Virtual Group — Built for the Infinite Flight Community.
         </p>
       </div>
 
+      <!-- Navigation Column -->
       <div class="footer-col">
         <h5>Navigation</h5>
-        <ul class="footer-links">
+        <ul class="footer-menu">
           <li><a href="apply.html">Apply</a></li>
           <li><a href="about.html">Learn more</a></li>
           <li><a href="events.html">Events</a></li>
@@ -794,36 +1172,37 @@
         </ul>
       </div>
 
+      <!-- Community Column with Verified Logos -->
       <div class="footer-col">
         <h5>Community</h5>
-        <ul class="footer-links">
+        <ul class="footer-menu">
           <li>
             <a href="https://community.infiniteflight.com/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
               IFC Forum
             </a>
           </li>
           <li>
             <a href="https://community.infiniteflight.com/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               IFC Thread
             </a>
           </li>
           <li>
             <a href="https://waypoint-live.app/" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
               Waypoint CC
             </a>
           </li>
           <li>
             <a href="https://instagram.com" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               Instagram
             </a>
           </li>
           <li>
             <a href="https://youtube.com" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               YouTube
             </a>
           </li>
@@ -831,8 +1210,9 @@
       </div>
     </div>
 
-    <div class="legal-notice">
-      <p style="font-weight: 700; color: #94a3b8; margin-bottom: 0.4rem;">
+    <!-- Copyright and Disclaimer -->
+    <div class="footer-legal-vault">
+      <p style="font-weight: 700; color: #cbd5e1; margin-bottom: 0.5rem;">
         © 2026 All Nippon Virtual Group — Built for the Infinite Flight Community
       </p>
       <p>
@@ -841,53 +1221,57 @@
     </div>
   </footer>
 
+  <!-- SCRIPT ENGINE -->
   <script>
     /* =========================================================
-       DYNAMIC CONFIG: ADD ITEMS HERE TO AUTO-INCREASE COUNTS
+       DYNAMIC CONFIGURATION
        ========================================================= */
-    const config = {
-      // Add items here later to automatically increase counts:
-      hubs: ["Hub 1", "Hub 2", "Hub 3"],
+    const anvgHubConfig = {
+      // Add or remove items here in the future; counts increment automatically:
+      hubs: ["Tokyo Haneda", "Tokyo Narita", "Kansai"],
       aircraftFamilies: ["Family 1", "Family 2", "Family 3", "Family 4"],
       continentsServed: ["Asia", "North America", "Europe"],
-      
-      // Update CEO name here anytime
       ceoName: "LUCIANO"
     };
 
-    // Auto-update counter numbers
-    document.getElementById("hubsCount").innerText = config.hubs.length;
-    document.getElementById("aircraftCount").innerText = config.aircraftFamilies.length;
-    document.getElementById("continentsCount").innerText = config.continentsServed.length;
-    document.getElementById("ceoName").innerText = config.ceoName;
+    // Render automatic counts
+    document.getElementById("hubsCount").innerText = anvgHubConfig.hubs.length;
+    document.getElementById("aircraftCount").innerText = anvgHubConfig.aircraftFamilies.length;
+    document.getElementById("continentsCount").innerText = anvgHubConfig.continentsServed.length;
+    document.getElementById("ceoNameTag").innerText = anvgHubConfig.ceoName;
 
     // Auto-update MM / YYYY
-    const d = new Date();
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const yyyy = d.getFullYear();
-    document.getElementById("opsStamp").innerText = `${mm} / ${yyyy}`;
+    const dateObj = new Date();
+    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const yyyy = dateObj.getFullYear();
+    document.getElementById("opsLiveDate").innerText = `${mm} / ${yyyy}`;
 
     // Sidebar drawer controls
     const sidebar = document.getElementById("sidebar");
     const backdrop = document.getElementById("backdrop");
-    document.getElementById("openSidebar").addEventListener("click", () => {
-      sidebar.classList.add("open");
-      backdrop.classList.add("show");
-    });
-    document.getElementById("closeSidebar").addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      backdrop.classList.remove("show");
-    });
-    backdrop.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      backdrop.classList.remove("show");
-    });
+    const openBtn = document.getElementById("openSidebar");
+    const closeBtn = document.getElementById("closeSidebar");
 
-    // Sub-menu accordion
-    document.querySelectorAll(".dropdown-btn").forEach(btn => {
+    function setDrawer(open) {
+      if (open) {
+        sidebar.classList.add("open");
+        backdrop.classList.add("show");
+      } else {
+        sidebar.classList.remove("open");
+        backdrop.classList.remove("show");
+      }
+    }
+
+    openBtn.addEventListener("click", () => setDrawer(true));
+    closeBtn.addEventListener("click", () => setDrawer(false));
+    backdrop.addEventListener("click", () => setDrawer(false));
+
+    // Multi-tier dropdowns inside sidebar
+    document.querySelectorAll(".dropdown-toggle").forEach(btn => {
       btn.addEventListener("click", () => {
-        const target = document.getElementById(btn.getAttribute("data-target"));
-        target.classList.toggle("show");
+        const subId = btn.getAttribute("data-target");
+        const subList = document.getElementById(subId);
+        subList.classList.toggle("show");
       });
     });
   </script>
