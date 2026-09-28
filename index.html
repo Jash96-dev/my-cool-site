@@ -11,16 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================================
-       ANVG EXECUTIVE DESIGN SYSTEM
-       ========================================================= */
     :root {
-      --anvg-blue: #0038A8;         /* Official Logo Royal Blue */
-      --anvg-cyan: #00B4FF;         /* Official Logo Electric Cyan */
-      --anvg-void: #010614;         /* Deep Aviation Night */
-      --anvg-surface: rgba(2, 12, 38, 0.75);
-      --anvg-glass: rgba(0, 56, 168, 0.12);
-      --anvg-card: rgba(3, 17, 51, 0.65);
+      --anvg-blue: #0038A8;         /* Logo Royal Blue */
+      --anvg-cyan: #00B4FF;         /* Logo Electric Cyan */
+      --anvg-void: #010614;         /* Deep Midnight Base */
+      --anvg-surface: rgba(2, 12, 38, 0.82);
+      --anvg-card: rgba(3, 17, 51, 0.7);
       --anvg-card-border: rgba(0, 180, 255, 0.25);
       --anvg-border-hover: rgba(0, 180, 255, 0.7);
       
@@ -53,36 +49,21 @@
       background-attachment: fixed;
     }
 
-    /* Subtle Grid Telemetry */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(0, 180, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 180, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* =========================================================
-       EXECUTIVE NAVIGATION
-       ========================================================= */
+    /* NAVIGATION */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
-      background: rgba(1, 6, 20, 0.85);
+      background: rgba(1, 6, 20, 0.88);
       border-bottom: 1px solid var(--anvg-card-border);
     }
 
     .nav-container {
       max-width: 1360px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 0.9rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -94,9 +75,8 @@
       text-decoration: none;
     }
 
-    /* Vector Logo in Header matching exact brand geometry */
     .brand-vector-logo {
-      height: 40px;
+      height: 38px;
       width: auto;
       display: flex;
       align-items: center;
@@ -105,19 +85,19 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 2.2rem;
+      gap: 2rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.2rem;
+      gap: 2rem;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.92rem;
+      font-weight: 600;
+      font-size: 0.9rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.2s ease;
@@ -128,11 +108,11 @@
     }
 
     .menu-trigger {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--anvg-card-border);
       border-radius: 8px;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -155,9 +135,7 @@
       border-radius: 2px;
     }
 
-    /* =========================================================
-       SIDEBAR NAVIGATION
-       ========================================================= */
+    /* SIDEBAR NAVIGATION */
     .sidebar {
       position: fixed;
       top: 0;
@@ -244,11 +222,11 @@
     .backdrop.show { display: block; }
 
     /* =========================================================
-       HERO SECTION WITH EXACT LOGO
+       HERO SECTION WITH REAL AIRCRAFT COCKPIT BACKGROUND
        ========================================================= */
     .hero {
       position: relative;
-      min-height: 88vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -256,19 +234,24 @@
       padding: 5rem 1.5rem;
       border-bottom: 1px solid var(--anvg-card-border);
       overflow: hidden;
+      /* Realistic High-Res Aircraft Flightdeck Background */
+      background: 
+        linear-gradient(180deg, rgba(1, 6, 20, 0.72) 0%, rgba(1, 6, 20, 0.9) 80%, var(--anvg-void) 100%),
+        url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=2000&q=85') center center / cover no-repeat;
+      background-attachment: fixed;
     }
 
     .hero-card {
       position: relative;
       z-index: 2;
-      max-width: 980px;
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
+      max-width: 920px;
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
       background: var(--anvg-surface);
       border: 1px solid var(--anvg-card-border);
       border-radius: 28px;
-      padding: 4.5rem 3rem;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), inset 0 0 30px rgba(0, 180, 255, 0.08);
+      padding: 3.8rem 2.8rem;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 180, 255, 0.08);
     }
 
     .ifc-pill {
@@ -281,11 +264,11 @@
       padding: 0.4rem 1.2rem;
       border-radius: 999px;
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
 
     .ifc-dot {
@@ -296,23 +279,58 @@
       box-shadow: 0 0 10px var(--anvg-cyan);
     }
 
-    /* Vector Recreation of Hero Logo */
+    /* CLEAN NON-OVERLAPPING LOGO CONTAINER */
     .hero-logo-box {
-      max-width: 540px;
+      max-width: 480px;
       margin: 0 auto 1.5rem;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-svg-main {
+      width: 100%;
+      height: auto;
+      max-height: 85px;
+    }
+
+    /* Separate, perfectly spaced text underneath */
+    .hero-org-title {
+      font-family: var(--font-brand);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-top: 0.8rem;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* REFINED MEDIUM INTRODUCTION HEADING */
+    .hero-main-heading {
+      font-family: var(--font-brand);
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      margin: 1.2rem auto 0.6rem;
+      max-width: 720px;
+      line-height: 1.3;
+    }
+
+    .hero-main-heading span {
+      color: var(--anvg-cyan);
     }
 
     .hero-slogan {
       font-family: var(--font-brand);
-      font-size: 1.55rem;
-      font-weight: 800;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--anvg-cyan);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      margin-bottom: 2.8rem;
-      text-shadow: 0 0 25px rgba(0, 180, 255, 0.5);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
     }
 
     .hero-btns {
@@ -323,9 +341,9 @@
     }
 
     .btn {
-      padding: 1rem 2.4rem;
+      padding: 0.9rem 2.2rem;
       font-family: var(--font-brand);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -362,30 +380,28 @@
       transform: translateY(-2px);
     }
 
-    /* =========================================================
-       SECTION ARCHITECTURE
-       ========================================================= */
+    /* SECTION BASICS */
     .section-wrap {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 5.5rem 2rem;
+      padding: 5rem 2rem;
     }
 
     .section-title {
       font-family: var(--font-brand);
-      font-size: 2.2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3.2rem;
       color: #fff;
     }
 
     /* AUTO COUNTERS */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
@@ -393,7 +409,7 @@
       background: var(--anvg-card);
       border: 1px solid var(--anvg-card-border);
       border-radius: 20px;
-      padding: 3rem 2rem;
+      padding: 2.8rem 2rem;
       text-align: center;
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
@@ -405,7 +421,7 @@
 
     .stat-num {
       font-family: var(--font-mono);
-      font-size: 4.2rem;
+      font-size: 3.8rem;
       font-weight: 700;
       color: var(--anvg-cyan);
       line-height: 1;
@@ -415,7 +431,7 @@
 
     .stat-label {
       font-family: var(--font-brand);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -427,7 +443,7 @@
       background: var(--anvg-card);
       border: 1px solid var(--anvg-card-border);
       border-radius: 24px;
-      padding: 3.8rem 2.8rem;
+      padding: 3.5rem 2.5rem;
     }
 
     .ops-options {
@@ -455,7 +471,7 @@
 
     .ops-item h4 {
       font-family: var(--font-brand);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -506,7 +522,7 @@
 
     .radar-frame {
       width: 100%;
-      height: 540px;
+      height: 520px;
     }
 
     .radar-frame iframe {
@@ -520,25 +536,25 @@
       background: linear-gradient(135deg, rgba(0, 56, 168, 0.45) 0%, rgba(1, 6, 20, 0.9) 100%);
       border: 1px solid var(--anvg-cyan);
       border-radius: 26px;
-      padding: 4.5rem 3.5rem;
+      padding: 4.2rem 3rem;
       text-align: center;
       box-shadow: 0 20px 50px rgba(0, 56, 168, 0.35);
     }
 
     .mission-card h3 {
       font-family: var(--font-brand);
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: var(--anvg-cyan);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
     }
 
     .mission-card p {
-      font-size: 1.3rem;
-      line-height: 1.95;
-      max-width: 920px;
+      font-size: 1.25rem;
+      line-height: 1.9;
+      max-width: 900px;
       margin: 0 auto;
       color: #f1f5f9;
       font-weight: 400;
@@ -550,13 +566,13 @@
       border: 1px solid var(--anvg-card-border);
       border-left: 6px solid var(--anvg-cyan);
       border-radius: 22px;
-      padding: 3.8rem 3.2rem;
-      max-width: 920px;
+      padding: 3.5rem 3rem;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .ceo-card blockquote {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-style: italic;
       line-height: 1.85;
       color: #ffffff;
@@ -566,14 +582,14 @@
     .ceo-name {
       font-family: var(--font-brand);
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--anvg-cyan);
       letter-spacing: 0.05em;
     }
 
     .ceo-role {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -584,14 +600,14 @@
       background: radial-gradient(circle at center, rgba(0, 56, 168, 0.55) 0%, rgba(1, 6, 20, 0.95) 85%);
       border: 2px solid var(--anvg-cyan);
       border-radius: 28px;
-      padding: 5.5rem 2rem;
+      padding: 5rem 2rem;
       text-align: center;
       box-shadow: 0 0 60px rgba(0, 180, 255, 0.35);
     }
 
     .join-card h2 {
       font-family: var(--font-brand);
-      font-size: 3rem;
+      font-size: 2.6rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.01em;
@@ -600,18 +616,18 @@
 
     .join-card p {
       color: var(--text-muted);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       max-width: 680px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.8rem;
     }
 
     .btn-apply-big {
       background: var(--anvg-cyan);
       color: var(--anvg-void);
-      padding: 1.2rem 3.5rem;
+      padding: 1.15rem 3.2rem;
       border-radius: 12px;
       font-family: var(--font-brand);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -647,7 +663,7 @@
 
     .footer-col h5 {
       font-family: var(--font-brand);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--anvg-cyan);
       text-transform: uppercase;
@@ -687,7 +703,8 @@
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .footer-grid { grid-template-columns: 1fr; }
-      .hero-card { padding: 3.5rem 1.5rem; }
+      .hero-card { padding: 3rem 1.5rem; }
+      .hero-main-heading { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -733,12 +750,12 @@
     <div class="nav-container">
       <a href="index.html" class="brand-wrap">
         <!-- EXACT LOGO VECTOR GEOMETRY -->
-        <svg class="brand-vector-logo" viewBox="0 0 460 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="52" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="62" fill="#ffffff" letter-spacing="-1">ANVG</text>
-          <!-- Forward slash trapezoid matching your uploaded logo -->
-          <polygon points="295,6 360,6 315,64 250,64" stroke="#ffffff" stroke-width="4" fill="none"/>
-          <polygon points="315,10 354,10 320,60 281,60" fill="#0038A8"/>
-          <polygon points="334,10 354,10 320,60 300,60" fill="#00B4FF"/>
+        <svg class="brand-vector-logo" viewBox="0 0 380 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="50" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#ffffff" letter-spacing="-1">ANVG</text>
+          <!-- Forward-slash trapezoid matching your uploaded logo[cite: 1, 2] -->
+          <polygon points="265,8 322,8 285,58 228,58" stroke="#ffffff" stroke-width="3.5" fill="none"/>
+          <polygon points="280,12 316,12 288,54 252,54" fill="#0038A8"/>
+          <polygon points="298,12 316,12 288,54 270,54" fill="#00B4FF"/>
         </svg>
       </a>
 
@@ -755,7 +772,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH COCKPIT BACKGROUND -->
   <section class="hero">
     <div class="hero-card">
       <div class="ifc-pill">
@@ -763,21 +780,26 @@
         Infinite Flight VA
       </div>
 
-      <!-- MAIN EMBEDDED HIGH-RES LOGO -->
+      <!-- EMBEDDED LOGO (No Overlap) -->
       <div class="hero-logo-box">
-        <svg viewBox="0 0 540 100" fill="none" style="width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
-          <!-- ANVG Italic Title -->
-          <text x="10" y="70" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="82" fill="#ffffff" letter-spacing="-2">ANVG</text>
-          <!-- Outer border trapezoid -->
-          <polygon points="360,10 440,10 380,84 300,84" stroke="#ffffff" stroke-width="5" fill="none"/>
-          <!-- Inner blue field -->
-          <polygon points="380,15 432,15 385,79 333,79" fill="#0038A8"/>
-          <!-- Electric cyan stripe -->
-          <polygon points="408,15 432,15 385,79 361,79" fill="#00B4FF"/>
-          <!-- Subtitle text -->
-          <text x="15" y="96" font-family="'Montserrat', sans-serif" font-weight="700" font-size="16" fill="#ffffff" letter-spacing="8">ALL NIPPON VIRTUAL GROUP</text>
+        <svg class="logo-svg-main" viewBox="0 0 460 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- ANVG Italic Title[cite: 1, 2] -->
+          <text x="10" y="58" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="70" fill="#ffffff" letter-spacing="-1.5">ANVG</text>
+          <!-- Outer border trapezoid[cite: 1, 2] -->
+          <polygon points="310,8 385,8 335,66 260,66" stroke="#ffffff" stroke-width="4.5" fill="none"/>
+          <!-- Inner blue field[cite: 1, 2] -->
+          <polygon points="330,12 378,12 338,62 290,62" fill="#0038A8"/>
+          <!-- Electric cyan stripe[cite: 1, 2] -->
+          <polygon points="355,12 378,12 338,62 315,62" fill="#00B4FF"/>
         </svg>
+        <!-- Distinct, cleanly separated subtitle underneath -->
+        <div class="hero-org-title">All Nippon Virtual Group</div>
       </div>
+
+      <!-- REFINED MEDIUM MAIN HEADING -->
+      <h2 class="hero-main-heading">
+        Elevating Mobile Flight Simulation Across <span>Infinite Flight</span>
+      </h2>
 
       <div class="hero-slogan">Fly beyond borders</div>
 
@@ -889,11 +911,11 @@
     <div class="footer-grid">
       <div class="footer-col">
         <!-- Logo inside footer -->
-        <svg viewBox="0 0 460 70" fill="none" style="height: 38px; width: auto; margin-bottom: 1.2rem;">
-          <text x="0" y="52" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="62" fill="#ffffff">ANVG</text>
-          <polygon points="295,6 360,6 315,64 250,64" stroke="#ffffff" stroke-width="4" fill="none"/>
-          <polygon points="315,10 354,10 320,60 281,60" fill="#0038A8"/>
-          <polygon points="334,10 354,10 320,60 300,60" fill="#00B4FF"/>
+        <svg viewBox="0 0 380 65" fill="none" style="height: 34px; width: auto; margin-bottom: 1.2rem;">
+          <text x="0" y="50" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#ffffff">ANVG</text>
+          <polygon points="265,8 322,8 285,58 228,58" stroke="#ffffff" stroke-width="3.5" fill="none"/>
+          <polygon points="280,12 316,12 288,54 252,54" fill="#0038A8"/>
+          <polygon points="298,12 316,12 288,54 270,54" fill="#00B4FF"/>
         </svg>
         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
           All Nippon Virtual Group — Built for the Infinite Flight Community.
