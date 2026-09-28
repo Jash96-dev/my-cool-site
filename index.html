@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Nippon Virtual Group | Fly Beyond Borders</title>
   
-  <!-- Sleek, High-End Aerospace Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --anvg-blue: #0038A8;         /* Logo Royal Blue */
-      --anvg-cyan: #00B4FF;         /* Logo Electric Cyan */
-      --anvg-void: #010614;         /* Deep Midnight Base */
-      --anvg-surface: rgba(2, 12, 38, 0.82);
-      --anvg-card: rgba(3, 17, 51, 0.72);
-      --anvg-card-border: rgba(0, 180, 255, 0.25);
+      --anvg-blue: #0038A8;
+      --anvg-cyan: #00B4FF;
+      --anvg-void: #010614;
+      --anvg-surface: rgba(2, 12, 38, 0.85);
+      --anvg-card: rgba(3, 17, 51, 0.75);
+      --anvg-card-border: rgba(0, 180, 255, 0.35);
       --anvg-border-hover: rgba(0, 180, 255, 0.7);
       
       --text-white: #ffffff;
@@ -42,11 +41,6 @@
       font-family: var(--font-body);
       overflow-x: hidden;
       line-height: 1.6;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 56, 168, 0.45) 0%, transparent 60%),
-        radial-gradient(circle at 100% 40%, rgba(0, 180, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 0% 80%, rgba(0, 56, 168, 0.25) 0%, transparent 50%);
-      background-attachment: fixed;
     }
 
     /* NAVIGATION */
@@ -54,9 +48,9 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      background: rgba(1, 6, 20, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(1, 6, 20, 0.9);
       border-bottom: 1px solid var(--anvg-card-border);
     }
 
@@ -78,8 +72,6 @@
     .brand-vector-logo {
       height: 38px;
       width: auto;
-      display: flex;
-      align-items: center;
     }
 
     .nav-actions {
@@ -108,7 +100,7 @@
     }
 
     .menu-trigger {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--anvg-card-border);
       border-radius: 8px;
       width: 42px;
@@ -119,12 +111,6 @@
       justify-content: center;
       gap: 5px;
       cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .menu-trigger:hover {
-      background: rgba(0, 180, 255, 0.15);
-      border-color: var(--anvg-cyan);
     }
 
     .menu-trigger span {
@@ -135,7 +121,7 @@
       border-radius: 2px;
     }
 
-    /* SIDEBAR NAVIGATION */
+    /* SIDEBAR */
     .sidebar {
       position: fixed;
       top: 0;
@@ -149,7 +135,7 @@
       padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
-      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: right 0.35s ease;
       overflow-y: auto;
     }
 
@@ -165,8 +151,6 @@
       margin-bottom: 2rem;
     }
 
-    .sidebar-close:hover { color: var(--anvg-cyan); }
-
     .drawer-list { list-style: none; }
     .drawer-list li { margin-bottom: 0.8rem; }
 
@@ -181,13 +165,11 @@
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.02);
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     .drawer-link:hover {
       background: rgba(0, 56, 168, 0.3);
       color: var(--anvg-cyan);
-      transform: translateX(4px);
     }
 
     .sub-drawer {
@@ -222,11 +204,11 @@
     .backdrop.show { display: block; }
 
     /* =========================================================
-       HERO SECTION WITH AIRPORT DRONE SHOT BACKGROUND
+       HERO WITH GUARANTEED AIRPORT DRONE SHOT BACKGROUND
        ========================================================= */
     .hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 88vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -234,31 +216,48 @@
       padding: 5rem 1.5rem;
       border-bottom: 1px solid var(--anvg-card-border);
       overflow: hidden;
-      /* Genuine High-Resolution Aerial Airport Drone Shot */
-      background: 
-        linear-gradient(180deg, rgba(1, 6, 20, 0.75) 0%, rgba(1, 6, 20, 0.88) 80%, var(--anvg-void) 100%),
-        url('https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=2000&q=85') center center / cover no-repeat;
-      background-attachment: fixed;
+      background-color: #010614;
+    }
+
+    /* DIRECT HIGH-DEFINITION AIRPORT RUNWAY & TERMINAL DRONE IMAGE */
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 1;
+      opacity: 0.45;
+      filter: contrast(1.1) brightness(0.85);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(1, 6, 20, 0.4) 0%, rgba(1, 6, 20, 0.95) 100%);
+      z-index: 2;
     }
 
     .hero-card {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       max-width: 920px;
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       background: var(--anvg-surface);
-      border: 1px solid var(--anvg-card-border);
+      border: 1.5px solid var(--anvg-card-border);
       border-radius: 28px;
       padding: 3.8rem 2.8rem;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 180, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 180, 255, 0.1);
     }
 
     .ifc-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: rgba(0, 180, 255, 0.1);
+      background: rgba(0, 180, 255, 0.15);
       border: 1px solid var(--anvg-cyan);
       color: var(--anvg-cyan);
       padding: 0.4rem 1.2rem;
@@ -268,7 +267,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .ifc-dot {
@@ -279,10 +278,9 @@
       box-shadow: 0 0 10px var(--anvg-cyan);
     }
 
-    /* LOGO CONTAINER */
     .hero-logo-box {
       max-width: 480px;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 1.2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -302,10 +300,8 @@
       text-transform: uppercase;
       color: #ffffff;
       margin-top: 0.8rem;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
-    /* REFINED MEDIUM MAIN HEADING */
     .hero-main-heading {
       font-family: var(--font-brand);
       font-size: 1.85rem;
@@ -368,18 +364,18 @@
     }
 
     .btn-glass {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--anvg-card-border);
       color: #fff;
     }
 
     .btn-glass:hover {
       border-color: var(--anvg-cyan);
-      background: rgba(0, 180, 255, 0.12);
+      background: rgba(0, 180, 255, 0.15);
       transform: translateY(-2px);
     }
 
-    /* SECTION BASICS */
+    /* SECTIONS */
     .section-wrap {
       max-width: 1280px;
       margin: 0 auto;
@@ -397,7 +393,6 @@
       color: #fff;
     }
 
-    /* AUTO COUNTERS */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -410,7 +405,7 @@
       border-radius: 20px;
       padding: 2.8rem 2rem;
       text-align: center;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .stat-card:hover {
@@ -437,7 +432,6 @@
       color: var(--text-muted);
     }
 
-    /* OPERATIONS CENTER */
     .ops-box {
       background: var(--anvg-card);
       border: 1px solid var(--anvg-card-border);
@@ -499,7 +493,6 @@
 
     .ops-stamp span { color: var(--anvg-cyan); font-weight: 700; }
 
-    /* RADAR MAP */
     .radar-container {
       background: var(--anvg-card);
       border: 1px solid var(--anvg-card-border);
@@ -530,7 +523,6 @@
       border: none;
     }
 
-    /* MISSION */
     .mission-card {
       background: linear-gradient(135deg, rgba(0, 56, 168, 0.45) 0%, rgba(1, 6, 20, 0.9) 100%);
       border: 1px solid var(--anvg-cyan);
@@ -559,7 +551,6 @@
       font-weight: 400;
     }
 
-    /* CEO QUOTE */
     .ceo-card {
       background: var(--anvg-card);
       border: 1px solid var(--anvg-card-border);
@@ -594,7 +585,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* READY TO JOIN */
     .join-card {
       background: radial-gradient(circle at center, rgba(0, 56, 168, 0.55) 0%, rgba(1, 6, 20, 0.95) 85%);
       border: 2px solid var(--anvg-cyan);
@@ -644,7 +634,6 @@
       box-shadow: 0 0 50px rgba(0, 180, 255, 0.9);
     }
 
-    /* FOOTER */
     footer {
       background: #00040d;
       border-top: 1px solid var(--anvg-card-border);
@@ -711,7 +700,7 @@
 
   <div class="backdrop" id="backdrop"></div>
 
-  <!-- SIDEBAR NAVIGATION -->
+  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <button class="sidebar-close" id="closeSidebar">&times;</button>
     <ul class="drawer-list">
@@ -744,11 +733,10 @@
     </ul>
   </aside>
 
-  <!-- TOP HEADER WITH LOGO -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-wrap">
-        <!-- EXACT LOGO VECTOR GEOMETRY -->
         <svg class="brand-vector-logo" viewBox="0 0 380 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <text x="0" y="50" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#ffffff" letter-spacing="-1">ANVG</text>
           <polygon points="265,8 322,8 285,58 228,58" stroke="#ffffff" stroke-width="3.5" fill="none"/>
@@ -763,22 +751,29 @@
           <a href="about.html">Learn more</a>
           <a href="fleet.html">Join fleet</a>
         </nav>
-        <button class="menu-trigger" id="openSidebar" aria-label="Open navigation menu">
+        <button class="menu-trigger" id="openSidebar" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH AIRPORT DRONE SHOT BACKGROUND -->
+  <!-- HERO SECTION WITH VERIFIED AIRPORT DRONE VIEW -->
   <section class="hero">
+    <!-- Dedicated Aerial Airport Runway / Tarmac Image -->
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Narita_Airport_terminal_1_and_runway_16R_from_air.jpg/1920px-Narita_Airport_terminal_1_and_runway_16R_from_air.jpg" 
+      alt="Airport aerial drone view" 
+      class="hero-bg-image" 
+    />
+    <div class="hero-overlay"></div>
+
     <div class="hero-card">
       <div class="ifc-pill">
         <div class="ifc-dot"></div>
         Infinite Flight VA
       </div>
 
-      <!-- EMBEDDED LOGO -->
       <div class="hero-logo-box">
         <svg class="logo-svg-main" viewBox="0 0 460 75" fill="none" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="58" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="70" fill="#ffffff" letter-spacing="-1.5">ANVG</text>
@@ -789,7 +784,6 @@
         <div class="hero-org-title">All Nippon Virtual Group</div>
       </div>
 
-      <!-- REFINED MEDIUM MAIN HEADING -->
       <h2 class="hero-main-heading">
         Elevating Mobile Flight Simulation Across <span>Infinite Flight</span>
       </h2>
@@ -804,7 +798,7 @@
     </div>
   </section>
 
-  <!-- AUTO-INCREMENT COUNTERS (HUBS, AIRCRAFT FAMILY, CONTINENTS) -->
+  <!-- AUTO-INCREMENT COUNTERS -->
   <section class="section-wrap">
     <div class="stats-grid">
       <div class="stat-card">
@@ -846,7 +840,7 @@
     </div>
   </section>
 
-  <!-- WAYPOINT LIVE WORLD MAP -->
+  <!-- WORLD MAP -->
   <section class="section-wrap" style="padding-top: 0;">
     <h2 class="section-title">World Map</h2>
     <div class="radar-container">
@@ -887,7 +881,6 @@
       <p>Take your Infinite Flight experience to the next level. Become a part of our growing virtual family today.</p>
       <a href="apply.html" class="btn-apply-big">
         Submit Application 
-        <!-- Share icon -->
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="18" cy="5" r="3"></circle>
           <circle cx="6" cy="12" r="3"></circle>
@@ -899,11 +892,10 @@
     </div>
   </section>
 
-  <!-- FOOTER NAVIGATION & COMMUNITY -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
-        <!-- Logo inside footer -->
         <svg viewBox="0 0 380 65" fill="none" style="height: 34px; width: auto; margin-bottom: 1.2rem;">
           <text x="0" y="50" font-family="'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#ffffff">ANVG</text>
           <polygon points="265,8 322,8 285,58 228,58" stroke="#ffffff" stroke-width="3.5" fill="none"/>
@@ -974,9 +966,6 @@
   </footer>
 
   <script>
-    /* =========================================================
-       DYNAMIC CONFIGURATION (Auto-Calculated Counts)
-       ========================================================= */
     const config = {
       hubs: ["Tokyo Haneda", "Tokyo Narita", "Kansai"],
       aircraftFamilies: ["Family 1", "Family 2", "Family 3", "Family 4"],
@@ -984,19 +973,16 @@
       ceoName: "LUCIANO"
     };
 
-    // Render counts automatically
     document.getElementById("hubsCount").innerText = config.hubs.length;
     document.getElementById("aircraftCount").innerText = config.aircraftFamilies.length;
     document.getElementById("continentsCount").innerText = config.continentsServed.length;
     document.getElementById("ceoName").innerText = config.ceoName;
 
-    // Monthly Date MM / YYYY
     const d = new Date();
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const yyyy = d.getFullYear();
     document.getElementById("opsStamp").innerText = `${mm} / ${yyyy}`;
 
-    // Sidebar navigation logic
     const sidebar = document.getElementById("sidebar");
     const backdrop = document.getElementById("backdrop");
     document.getElementById("openSidebar").addEventListener("click", () => {
@@ -1012,7 +998,6 @@
       backdrop.classList.remove("show");
     });
 
-    // Sub-menu accordion
     document.querySelectorAll(".dropdown-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const target = document.getElementById(btn.getAttribute("data-target"));
