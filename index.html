@@ -3,32 +3,1081 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to My Website</title>
+  <title>All Nippon Virtual Group | Fly Beyond Borders</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --anvg-blue: #0038A8;
+      --anvg-cyan: #00B4FF;
+      --anvg-navy-deep: #020b1e;
+      --anvg-white: #ffffff;
+      --glass-nav: rgba(2, 11, 30, 0.85);
+      --glass-card: rgba(4, 18, 50, 0.65);
+      --glass-border: rgba(0, 180, 255, 0.22);
+      --text-muted: #94a3b8;
+      --font-body: 'Outfit', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-telemetry: 'Space Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      margin: 0;
-      min-height: 100vh;
+      background-color: var(--anvg-navy-deep);
+      color: var(--anvg-white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 56, 168, 0.35) 0%, transparent 65%),
+        radial-gradient(circle at 100% 30%, rgba(0, 180, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 0% 75%, rgba(0, 56, 168, 0.25) 0%, transparent 55%);
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 70px 70px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: var(--glass-nav);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(0, 180, 255, 0.4));
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--anvg-white);
+      text-shadow: 0 0 14px var(--anvg-cyan);
+    }
+
+    .btn-apply-glass {
+      background: linear-gradient(135deg, var(--anvg-blue), #002570);
+      color: #fff !important;
+      padding: 0.75rem 1.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--anvg-cyan);
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 180, 255, 0.35);
+    }
+
+    .menu-toggle {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      right: -380px;
+      width: 350px;
+      height: 100vh;
+      background: rgba(2, 9, 24, 0.96);
+      backdrop-filter: blur(35px);
+      border-left: 1px solid var(--glass-border);
+      z-index: 2000;
+      padding: 2.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+    }
+
+    .sidebar-drawer.active { right: 0; }
+
+    .sidebar-close {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .drawer-nav { list-style: none; }
+    .drawer-nav li { margin-bottom: 0.8rem; }
+
+    .drawer-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+    }
+
+    .drawer-link:hover {
+      background: rgba(0, 56, 168, 0.25);
+      color: var(--anvg-cyan);
+    }
+
+    .sub-drawer {
+      list-style: none;
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+      display: none;
+      border-left: 2px solid var(--anvg-cyan);
+    }
+
+    .sub-drawer.show { display: block; }
+
+    .sub-drawer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .sub-drawer a:hover { color: #fff; }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1500;
+      display: none;
+    }
+
+    .drawer-backdrop.show { display: block; }
+
+    .hero-cockpit {
+      position: relative;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0f172a;
-      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: 
+        linear-gradient(180deg, rgba(2, 11, 30, 0.75) 0%, rgba(2, 11, 30, 0.92) 80%, var(--anvg-navy-deep) 100%),
+        url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=2000&q=85') center 30% / cover no-repeat;
+      border-bottom: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+
+    .hero-cockpit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 35%, var(--anvg-navy-deep) 90%);
+      pointer-events: none;
+    }
+
+    .hero-glass-core {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      backdrop-filter: blur(24px);
+      background: rgba(3, 15, 42, 0.65);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 4.5rem 3rem;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+    }
+
+    .hero-main-logo {
+      max-width: 460px;
+      width: 90%;
+      height: auto;
+      margin: 0 auto 1.8rem;
+      display: block;
+      filter: drop-shadow(0 0 25px rgba(0, 180, 255, 0.45));
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 180, 255, 0.1);
+      border: 1px solid var(--anvg-cyan);
+      padding: 0.5rem 1.4rem;
+      border-radius: 9999px;
+      font-family: var(--font-telemetry);
+      font-size: 0.8rem;
+      color: var(--anvg-cyan);
+      margin-bottom: 1.8rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--anvg-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--anvg-cyan);
+    }
+
+    .hero-slogan {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
       color: #ffffff;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-slogan span { color: var(--anvg-cyan); }
+
+    .hero-intro {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 740px;
+      margin: 0 auto 2.8rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      padding: 1.05rem 2.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-action-primary {
+      background: linear-gradient(135deg, var(--anvg-blue), #002266);
+      border: 1px solid var(--anvg-cyan);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(0, 180, 255, 0.4);
+    }
+
+    .btn-action-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+    }
+
+    .section-shell {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 6rem 1.8rem;
+    }
+
+    .section-eyebrow {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-sub {
+      font-family: var(--font-telemetry);
+      font-size: 0.82rem;
+      color: var(--anvg-cyan);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .section-heading {
+      font-family: var(--font-body);
+      font-size: 2.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .stat-cluster {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .stat-glass-card {
+      background: var(--glass-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 3rem 2.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--anvg-cyan), transparent);
+    }
+
+    .stat-counter-value {
+      font-family: var(--font-telemetry);
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      background: linear-gradient(180deg, #ffffff 40%, var(--anvg-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-caption {
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .stat-list-preview {
+      font-family: var(--font-telemetry);
+      font-size: 0.85rem;
+      color: var(--anvg-cyan);
+      margin-top: 0.8rem;
+    }
+
+    .ops-terminal-glass {
+      background: var(--glass-card);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 3.5rem 2.8rem;
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .ops-tile {
+      background: rgba(2, 11, 30, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 2.2rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ops-tile h4 {
+      font-family: var(--font-body);
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ops-tile h4 span { color: var(--anvg-cyan); }
+    .ops-tile p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .ops-status-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.8rem;
+      text-align: center;
+      font-family: var(--font-telemetry);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .ops-status-bar span { color: var(--anvg-cyan); font-weight: 700; }
+
+    .radar-terminal {
+      background: var(--glass-card);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .radar-top-hud {
+      padding: 1.2rem 2rem;
+      background: rgba(2, 9, 24, 0.94);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-telemetry);
+      font-size: 0.85rem;
+    }
+
+    .radar-live-signal {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .radar-live-ring {
+      width: 10px;
+      height: 10px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #34d399;
+    }
+
+    .radar-screen {
+      width: 100%;
+      height: 560px;
+      background: #020b1e;
+    }
+
+    .radar-screen iframe { width: 100%; height: 100%; border: none; }
+
+    .mission-plaque {
+      background: linear-gradient(135deg, rgba(0, 56, 168, 0.45) 0%, rgba(2, 11, 30, 0.9) 100%);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--anvg-cyan);
+      border-radius: 28px;
+      padding: 4.5rem 3.5rem;
       text-align: center;
     }
-    .box {
-      background: #1e293b;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+
+    .mission-plaque h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--anvg-cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
     }
-    h1 { color: #38bdf8; }
+
+    .mission-text {
+      font-size: 1.35rem;
+      line-height: 1.95;
+      max-width: 960px;
+      margin: 0 auto;
+      color: #f1f5f9;
+    }
+
+    .fleet-stage {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--glass-card);
+      border: 2px solid var(--glass-border);
+      border-radius: 26px;
+      overflow: hidden;
+    }
+
+    .fleet-aircraft { display: none; position: relative; }
+    .fleet-aircraft.active { display: block; }
+
+    .fleet-aircraft img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fleet-hud-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(2, 9, 24, 0.95) 20%, rgba(2, 9, 24, 0.7) 65%, transparent 100%);
+      padding: 3.5rem 2.5rem 1.8rem;
+    }
+
+    .fleet-hud-overlay h4 { font-size: 1.8rem; font-weight: 800; color: #fff; }
+    .fleet-hud-overlay p { font-family: var(--font-telemetry); color: var(--anvg-cyan); font-size: 0.95rem; }
+
+    .fleet-nav-pills {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.4rem;
+      background: rgba(2, 9, 24, 0.98);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .fleet-pill {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+
+    .fleet-pill.active {
+      background: var(--anvg-cyan);
+      width: 42px;
+      border-radius: 9999px;
+    }
+
+    .ceo-executive-card {
+      background: var(--glass-card);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 4rem 3.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      border-left: 6px solid var(--anvg-cyan);
+    }
+
+    .ceo-quote-lead {
+      font-size: 1.3rem;
+      font-style: italic;
+      line-height: 1.85;
+      color: #f8fafc;
+      margin-bottom: 2.2rem;
+    }
+
+    .ceo-signature-block { display: flex; align-items: center; gap: 1.4rem; }
+
+    .ceo-badge-img {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      border: 2px solid var(--anvg-cyan);
+      object-fit: cover;
+    }
+
+    .ceo-name-field { font-weight: 800; font-size: 1.25rem; }
+    .ceo-role-field {
+      font-family: var(--font-telemetry);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .recruit-cockpit-banner {
+      background: radial-gradient(circle at center, rgba(0, 56, 168, 0.45) 0%, rgba(2, 9, 24, 0.95) 85%);
+      backdrop-filter: blur(28px);
+      border: 2px solid var(--anvg-cyan);
+      border-radius: 28px;
+      padding: 5.5rem 2rem;
+      text-align: center;
+    }
+
+    .recruit-cockpit-banner h2 { font-size: 3.2rem; font-weight: 900; margin-bottom: 1rem; }
+    .recruit-cockpit-banner p { color: var(--text-muted); font-size: 1.3rem; max-width: 700px; margin: 0 auto 3rem; }
+
+    .btn-apply-cta {
+      background: linear-gradient(135deg, var(--anvg-blue), #002266);
+      color: #fff;
+      padding: 1.25rem 3.5rem;
+      border-radius: 14px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      border: 1px solid var(--anvg-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #010612;
+      border-top: 1px solid var(--glass-border);
+      padding: 5rem 1.8rem 3rem;
+    }
+
+    .footer-matrix {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--anvg-cyan);
+      text-transform: uppercase;
+    }
+
+    .footer-menu { list-style: none; }
+    .footer-menu li { margin-bottom: 0.85rem; }
+
+    .footer-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.98rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-legal-vault {
+      max-width: 1320px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2.2rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .footer-matrix { grid-template-columns: 1fr; }
+      .section-heading { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>Welcome to My Website!</h1>
-    <p>This site is live on the internet.</p>
-  </div>
+
+  <div class="drawer-backdrop" id="backdrop"></div>
+
+  <aside class="sidebar-drawer" id="sidebar">
+    <button class="sidebar-close" id="closeSidebar">&times;</button>
+    <ul class="drawer-nav">
+      <li><a href="index.html" class="drawer-link">Home</a></li>
+      <li>
+        <div class="drawer-link dropdown-toggle" data-target="sub-about">About Us <span>▾</span></div>
+        <ul class="sub-drawer" id="sub-about">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="staff.html">Staff</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="drawer-link dropdown-toggle" data-target="sub-ops">Operations <span>▾</span></div>
+        <ul class="sub-drawer" id="sub-ops">
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="routes.html">Routes</a></li>
+          <li><a href="ranks.html">Ranks</a></li>
+        </ul>
+      </li>
+      <li><a href="training.html" class="drawer-link">Training</a></li>
+      <li>
+        <div class="drawer-link dropdown-toggle" data-target="sub-change">Change Log <span>▾</span></div>
+        <ul class="sub-drawer" id="sub-change">
+          <li><a href="changelog.html">Change Log</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </li>
+      <li><a href="apply.html" class="drawer-link" style="color: var(--anvg-cyan);">Submit Application ↗</a></li>
+    </ul>
+  </aside>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="logo-white.png" alt="ANVG Logo" class="brand-logo-img" />
+      </a>
+      <div class="nav-actions">
+        <nav class="nav-links">
+          <a href="events.html">Events</a>
+          <a href="about.html">Learn More</a>
+          <a href="fleet.html">Join Fleet</a>
+        </nav>
+        <a href="apply.html" class="btn-apply-glass">Apply Now</a>
+        <button class="menu-toggle" id="openSidebar" aria-label="Open Drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-cockpit">
+    <div class="hero-glass-core">
+      <div class="badge-pill">
+        <div class="badge-dot"></div>
+        OFFICIAL INFINITE FLIGHT VIRTUAL AIRLINE
+      </div>
+      <img src="logo-white.png" alt="ANVG Brand" class="hero-main-logo" />
+      <div class="hero-slogan">Fly <span>Beyond Borders</span></div>
+      <p class="hero-intro">
+        Harmonizing real-world Japanese omotenashi aviation hospitality with high-precision virtual airline simulation across Infinite Flight.
+      </p>
+      <div class="hero-btns">
+        <a href="events.html" class="btn-action btn-action-glass">Events Calendar</a>
+        <a href="about.html" class="btn-action btn-action-glass">Learn More</a>
+        <a href="fleet.html" class="btn-action btn-action-primary">Join Fleet & Routes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-eyebrow">
+      <span class="section-sub">Network Capacity</span>
+      <h2 class="section-heading">Global Network Footprint</h2>
+    </div>
+    <div class="stat-cluster">
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="hubsCount">0</div>
+        <div class="stat-caption">Global Hubs</div>
+        <div class="stat-list-preview" id="hubsPreview">Syncing Hubs...</div>
+      </div>
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="aircraftCount">0</div>
+        <div class="stat-caption">Aircraft Families</div>
+        <div class="stat-list-preview" id="aircraftPreview">Syncing Fleet...</div>
+      </div>
+      <div class="stat-glass-card">
+        <div class="stat-counter-value" id="continentsCount">0</div>
+        <div class="stat-caption">Continents Served</div>
+        <div class="stat-list-preview" id="continentsPreview">Syncing Routes...</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="ops-terminal-glass">
+      <div class="section-eyebrow" style="margin-bottom: 2rem;">
+        <span class="section-sub">Telemetry Hub</span>
+        <h2 class="section-heading">Operations Center</h2>
+      </div>
+      <div class="ops-grid">
+        <a href="roster.html" class="ops-tile">
+          <h4>Pilots Roster <span>↗</span></h4>
+          <p>Active pilot credentials, flight log rankings, accumulated flight hours, and type ratings.</p>
+        </a>
+        <a href="routes.html" class="ops-tile">
+          <h4>Route Network <span>↗</span></h4>
+          <p>Comprehensive domestic Japanese feeder connections and intercontinental long-haul corridors.</p>
+        </a>
+        <a href="codeshare.html" class="ops-tile">
+          <h4>Codeshare Partners <span>↗</span></h4>
+          <p>Global virtual exchange lines and reciprocal flight-log agreements.</p>
+        </a>
+      </div>
+      <div class="ops-status-bar">
+        stats are updated monthly by our operations team | last updates <span id="opsLiveDate">MM / YYYY</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="section-eyebrow">
+      <span class="section-sub">Live ACARS Telemetry</span>
+      <h2 class="section-heading">Live World Radar</h2>
+    </div>
+    <div class="radar-terminal">
+      <div class="radar-top-hud">
+        <div class="radar-live-signal">
+          <div class="radar-live-ring"></div>
+          RADAR ACTIVE VIA WAYPOINT-LIVE.APP
+        </div>
+        <div style="color: var(--text-muted);">INFINITE FLIGHT LIVE AIRSPACE</div>
+      </div>
+      <div class="radar-screen">
+        <iframe src="https://waypoint-live.app/" title="Waypoint Radar"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="mission-plaque">
+      <h3>Our Mission</h3>
+      <p class="mission-text">
+        "To turn every flight into a journey worth remembering. ANVG brings together pilots from around the world to explore, connect, and experience aviation through the spirit of Japan. We fly with purpose, grow as a community, and leave a mark on every route we take."
+      </p>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="section-eyebrow">
+      <span class="section-sub">Aviation Engineering</span>
+      <h2 class="section-heading">Fleet Showcase</h2>
+    </div>
+    <div class="fleet-stage">
+      <div class="fleet-aircraft active">
+        <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1400&q=85" alt="Boeing 787" />
+        <div class="fleet-hud-overlay">
+          <h4>Boeing 787-9 Dreamliner</h4>
+          <p>Long-Range Transpacific Flagship • Rolls-Royce Trent 1000</p>
+        </div>
+      </div>
+      <div class="fleet-aircraft">
+        <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1400&q=85" alt="Airbus A321" />
+        <div class="fleet-hud-overlay">
+          <h4>Airbus A321neo</h4>
+          <p>Domestic Mainline Workhorse • CFM LEAP-1A Powerplants</p>
+        </div>
+      </div>
+      <div class="fleet-aircraft">
+        <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1400&q=85" alt="Boeing 777" />
+        <div class="fleet-hud-overlay">
+          <h4>Boeing 777-300ER</h4>
+          <p>Intercontinental Heavy Widebody • General Electric GE90-115B</p>
+        </div>
+      </div>
+      <div class="fleet-nav-pills">
+        <span class="fleet-pill active" onclick="switchAircraft(0)"></span>
+        <span class="fleet-pill" onclick="switchAircraft(1)"></span>
+        <span class="fleet-pill" onclick="switchAircraft(2)"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="ceo-executive-card">
+      <p class="ceo-quote-lead">
+        "Welcome to ANVG. We’re here to make every flight meaningful, every destination memorable, and every pilot part of something greater. Let’s fly together and build something we can be proud of."
+      </p>
+      <div class="ceo-signature-block">
+        <img src="logo-square.png" alt="ANVG CEO" class="ceo-badge-img" />
+        <div>
+          <div class="ceo-name-field" id="ceoNameTag">LUCIANO</div>
+          <div class="ceo-role-field" id="ceoRoleTag">CEO - All Nippon Virtual Group</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" style="padding-top: 0;">
+    <div class="recruit-cockpit-banner">
+      <h2>Ready to join?</h2>
+      <p>Take your Infinite Flight experience to the next level. Become a part of our growing virtual family today.</p>
+      <a href="apply.html" class="btn-apply-cta">
+        Submit Application 
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-matrix">
+      <div class="footer-col">
+        <img src="logo-white.png" alt="ANVG" style="height: 38px; width: auto; margin-bottom: 1.2rem;" />
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 340px; line-height: 1.8;">
+          Honoring the legacy of Japanese hospitality in global simulation. Built for the Infinite Flight community, driven by realism and camaraderie.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul class="footer-menu">
+          <li><a href="apply.html">Apply</a></li>
+          <li><a href="about.html">Learn More</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="roster.html">Roster</a></li>
+          <li><a href="codeshare.html">Codeshare</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Community</h5>
+        <ul class="footer-menu">
+          <li>
+            <a href="https://community.infiniteflight.com/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+              IFC Forum
+            </a>
+          </li>
+          <li>
+            <a href="https://community.infiniteflight.com/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              IFC Thread
+            </a>
+          </li>
+          <li>
+            <a href="https://waypoint-live.app/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              Waypoint CC
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal-vault">
+      <p style="font-weight: 700; color: #94a3b8; margin-bottom: 0.5rem;">
+        © 2026 All Nippon Virtual Group — Built for the Infinite Flight Community
+      </p>
+      <p>
+        All Nippon Virtual Group is in no way related to the real-world All Nippon Airways. All trademarks and logos remain the property of their respective owners.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const anvgHubConfig = {
+      hubs: [
+        "Tokyo Haneda (RJTT)",
+        "Tokyo Narita (RJAA)",
+        "Kansai (RJBB)",
+        "Chubu Centrair (RJGG)"
+      ],
+      aircraftFamilies: [
+        "Boeing 777 Family",
+        "Boeing 787 Dreamliner",
+        "Airbus A321neo",
+        "Boeing 737-800",
+        "Bombardier Dash 8-Q400"
+      ],
+      continentsServed: [
+        "Asia",
+        "North America",
+        "Europe",
+        "Oceania"
+      ],
+      ceoName: "LUCIANO",
+      ceoRole: "CEO - All Nippon Virtual Group"
+    };
+
+    document.getElementById("hubsCount").innerText = anvgHubConfig.hubs.length;
+    document.getElementById("hubsPreview").innerText = anvgHubConfig.hubs.slice(0, 2).join(", ") + " + more";
+
+    document.getElementById("aircraftCount").innerText = anvgHubConfig.aircraftFamilies.length;
+    document.getElementById("aircraftPreview").innerText = anvgHubConfig.aircraftFamilies.slice(0, 2).join(", ") + " + more";
+
+    document.getElementById("continentsCount").innerText = anvgHubConfig.continentsServed.length;
+    document.getElementById("continentsPreview").innerText = anvgHubConfig.continentsServed.join(" • ");
+
+    document.getElementById("ceoNameTag").innerText = anvgHubConfig.ceoName;
+    document.getElementById("ceoRoleTag").innerText = anvgHubConfig.ceoRole;
+
+    const dateObj = new Date();
+    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const yyyy = dateObj.getFullYear();
+    document.getElementById("opsLiveDate").innerText = `${mm} / ${yyyy}`;
+
+    const sidebar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("backdrop");
+    const openBtn = document.getElementById("openSidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    function setDrawer(open) {
+      if (open) {
+        sidebar.classList.add("active");
+        backdrop.classList.add("show");
+      } else {
+        sidebar.classList.remove("active");
+        backdrop.classList.remove("show");
+      }
+    }
+
+    openBtn.addEventListener("click", () => setDrawer(true));
+    closeBtn.addEventListener("click", () => setDrawer(false));
+    backdrop.addEventListener("click", () => setDrawer(false));
+
+    document.querySelectorAll(".dropdown-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const subId = btn.getAttribute("data-target");
+        const subList = document.getElementById(subId);
+        subList.classList.toggle("show");
+      });
+    });
+
+    let currentAircraft = 0;
+    const aircraftSlides = document.querySelectorAll(".fleet-aircraft");
+    const navPills = document.querySelectorAll(".fleet-pill");
+
+    function switchAircraft(index) {
+      aircraftSlides[currentAircraft].classList.remove("active");
+      navPills[currentAircraft].classList.remove("active");
+      currentAircraft = index;
+      aircraftSlides[currentAircraft].classList.add("active");
+      navPills[currentAircraft].classList.add("active");
+    }
+
+    setInterval(() => {
+      let next = (currentAircraft + 1) % aircraftSlides.length;
+      switchAircraft(next);
+    }, 4500);
+  </script>
 </body>
 </html>
