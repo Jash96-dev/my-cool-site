@@ -207,7 +207,7 @@
     .backdrop.show { display: block; }
 
     /* =========================================================
-       HERO: TRANSPARENT GLASS
+       HERO: CRYSTAL CLEAR TRANSPARENT GLASS
        ========================================================= */
     .hero {
       position: relative;
@@ -600,77 +600,58 @@
     }
 
     /* =========================================================
-       READY TO JOIN: LARGE, HIGH-IMPACT EYE-CATCHING DESIGN
+       READY TO JOIN (REFINED MEDIUM PROPORTIONS)
        ========================================================= */
     .join-card {
-      background: radial-gradient(circle at center, rgba(0, 56, 168, 0.8) 0%, rgba(1, 6, 20, 0.95) 75%);
-      border: 2.5px solid var(--anvg-cyan);
-      border-radius: 32px;
-      padding: 6.5rem 2.5rem;
+      background: radial-gradient(circle at center, rgba(0, 56, 168, 0.4) 0%, rgba(1, 6, 20, 0.92) 80%);
+      border: 1.5px solid var(--anvg-cyan);
+      border-radius: 22px;
+      padding: 3.5rem 2rem;
       text-align: center;
-      box-shadow: 
-        0 0 80px rgba(0, 180, 255, 0.45),
-        inset 0 0 40px rgba(0, 56, 168, 0.6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .join-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #ffffff, var(--anvg-cyan), transparent);
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: 0 0 45px rgba(0, 180, 255, 0.25);
     }
 
     .join-card h2 {
       font-family: var(--font-brand);
-      font-size: 3.8rem;
-      font-weight: 900;
+      font-size: 1.85rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, #ffffff 40%, var(--anvg-cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 45px rgba(0, 180, 255, 0.7);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
     }
 
     .join-card p {
-      color: #ffffff;
-      font-size: 1.35rem;
-      max-width: 780px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.8;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.6;
     }
 
     .btn-apply-big {
-      background: linear-gradient(135deg, var(--anvg-cyan), #0077c8);
-      color: #ffffff;
-      padding: 1.4rem 4.2rem;
-      border-radius: 16px;
+      background: var(--anvg-cyan);
+      color: var(--anvg-void);
+      padding: 0.95rem 2.5rem;
+      border-radius: 10px;
       font-family: var(--font-brand);
-      font-size: 1.25rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 2px solid #ffffff;
+      border: 1.5px solid #ffffff;
       display: inline-flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.65rem;
       text-decoration: none;
-      box-shadow: 0 0 50px rgba(0, 180, 255, 0.85);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.5);
+      transition: all 0.25s ease;
     }
 
     .btn-apply-big:hover {
-      transform: scale(1.06) translateY(-4px);
-      box-shadow: 0 0 75px rgba(0, 180, 255, 1);
-      background: linear-gradient(135deg, #ffffff, var(--anvg-cyan));
-      color: var(--anvg-void);
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 180, 255, 0.85);
     }
 
     footer {
@@ -732,8 +713,8 @@
       .footer-grid { grid-template-columns: 1fr; }
       .hero-card { padding: 3rem 1.5rem; }
       .hero-main-heading { font-size: 1.5rem; }
-      .join-card h2 { font-size: 2.6rem; }
-      .btn-apply-big { padding: 1.1rem 2.8rem; font-size: 1.05rem; }
+      .join-card { padding: 2.5rem 1.5rem; }
+      .join-card h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -799,7 +780,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH TRANSPARENT GLASS CARD -->
+  <!-- HERO SECTION WITH TOKYO HANEDA & MT. FUJI BACKGROUND -->
   <section class="hero">
     <img 
       src="haneda-bg.jpg" 
@@ -914,14 +895,14 @@
     </div>
   </section>
 
-  <!-- READY TO JOIN (LARGE & EYE-CATCHING) -->
+  <!-- READY TO JOIN (REFINED MEDIUM SIZE) -->
   <section class="section-wrap" style="padding-top: 0;">
     <div class="join-card">
       <h2>Ready to join?</h2>
       <p>Take your Infinite Flight experience to the next level. Become a part of our growing virtual family today.</p>
       <a href="apply.html" class="btn-apply-big">
         Submit Application 
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="18" cy="5" r="3"></circle>
           <circle cx="6" cy="12" r="3"></circle>
           <circle cx="18" cy="19" r="3"></circle>
